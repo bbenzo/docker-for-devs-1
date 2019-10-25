@@ -2,9 +2,9 @@ FROM node:latest
 
 WORKDIR app
 
-COPY . /app
+COPY . .
 
-RUN npm install
+RUN npm install && npm run build
 
 EXPOSE 8080
 

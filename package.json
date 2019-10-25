@@ -1,9 +1,12 @@
 {
   "name": "docker-for-devs-1",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
-    "start": "nodemon --exec babel-node index.js",
+    "clean": "rm -rf build && mkdir build",
+    "build-babel": "babel -d ./build ./src -s",
+    "build": "npm run clean && npm run build-babel",
+    "start": "node build/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -11,12 +14,16 @@
   "license": "MIT",
   "description": "",
   "devDependencies": {
+    "@babel/cli": "^7.6.4",
     "@babel/core": "^7.6.4",
     "@babel/node": "^7.6.3",
+    "@babel/plugin-transform-runtime": "^7.6.2",
+    "@babel/polyfill": "^7.6.0",
     "@babel/preset-env": "^7.6.3",
     "nodemon": "^1.19.3"
   },
   "dependencies": {
+    "@babel/runtime": "^7.6.3",
     "koa": "^2.7.0"
   }
 }
